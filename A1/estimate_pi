@@ -1,0 +1,28 @@
+digraph {
+	n [label=n]
+	range [label=range]
+	i [label=i]
+	x [label=x]
+	y [label=y]
+	add [label=add]
+	square [label=square]
+	in_circle [label=in_circle]
+	count [label=count]
+	multiply [label=multiply]
+	divide [label=divide]
+	pi [label=pi]
+	return [label=return]
+	n -> range
+	range -> i
+	i -> x
+	i -> y
+	x -> square
+	y -> square
+	square -> add
+	add -> in_circle
+	in_circle -> count
+	count -> multiply
+	multiply -> divide
+	divide -> pi
+	pi -> return
+}
