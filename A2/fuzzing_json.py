@@ -1,8 +1,18 @@
+"""
+    This class generates a random tree structure that can be converted to a JSON string.
+
+    The generated tree consists of dictionary nodes, list nodes, and integer nodes. The tree structure is created
+    based on a specified size, representing the number of nodes in the tree.
+
+    The `json_tree` class provides methods to convert the tree structure into a JSON string and to generate
+    random data for fuzzing JSON encoding libraries.
+
+"""
+
 import random
 import json 
 import orjson
 import msgspec
-
 from tqdm import tqdm
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -70,6 +80,9 @@ class json_tree:
             self.new_scope(new_scope_id)
             
     def new_scope(self,id):
+        """
+        
+        """
         queue = [self.root]
         while queue:
             node = queue.pop(0)
@@ -97,7 +110,7 @@ class json_tree:
             for key in content:
                 result += f'"{key}": {json_tree.convert_node(content[key])}, '
             if len(content) > 0:
-                result = result[:-2]  # Remove the trailing comma and space
+                result = result[:-2] 
             result += "}"
             return result
         elif isinstance(node, list_node):
@@ -106,7 +119,7 @@ class json_tree:
             for item in content:
                 result += f'{json_tree.convert_node(item)}, '
             if len(content) > 0:
-                result = result[:-2]  # Remove the trailing comma and space
+                result = result[:-2] 
             result += "]"
             return result
         elif isinstance(node, int_node):
@@ -114,6 +127,9 @@ class json_tree:
 
     @staticmethod
     def coin():
+        """
+        My favorite coin
+        """
         return random.randint(0,1)
 
 
